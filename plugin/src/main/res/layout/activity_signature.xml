@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF0084cf" >
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="请在指定区域内签名"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFFFF"
+        android:gravity="center_horizontal"/>
+	
+	<LinearLayout
+	    android:id="@+id/signature_pad_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/text_title"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#FF658159">
+	    
+	    <com.ai.base.gesture.AISignatureView
+	        android:id="@+id/signature_pad"
+	        android:layout_width="match_parent"
+	        android:layout_height="200dp"
+	        android:background="#FFFFFFFF" />
+	    
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signature_pad_layout"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确定"
+            android:textSize="16sp"
+            android:textColor="#FF4d5b65"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFFFF"/>
+
+        <Button
+            android:id="@+id/btn_rewrite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重签"
+            android:textSize="16sp"
+            android:textColor="#FF4d5b65"
+            android:layout_marginRight="20dp"
+            android:background="#FFFFFFFF"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="16sp"
+            android:textColor="#FF4d5b65"
+            android:background="#FFFFFFFF"/>
+        
+    </LinearLayout>
+
+</RelativeLayout>
