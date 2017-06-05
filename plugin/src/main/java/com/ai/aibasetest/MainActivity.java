@@ -28,9 +28,6 @@ public class MainActivity extends DLBasePluginActivity {
     private static String mGlabalCfgFile = "global.properties";
     private static String mPluginCfgFile = "h5Plugin.xml";
 
-    // 当前插件的apk的路径,由宿主app传递过来
-    private String mApkPath;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +39,6 @@ public class MainActivity extends DLBasePluginActivity {
     private void initParam() {
         try {
             Intent intent = getIntent();
-            mApkPath = intent.getStringExtra("apkPath");
-
             InputStream is = this.getResources().getAssets().open(mGlabalCfgFile);
             GlobalCfg_dl globalCfg = GlobalCfg_dl.getInstance();
             globalCfg.parseConfig(is);
@@ -54,7 +49,7 @@ public class MainActivity extends DLBasePluginActivity {
 
     private void setH5PluginEngine() {
         AIWebViewPluginEngine_dl engine = AIWebViewPluginEngine_dl.getInstance();
-        engine.setApkPath(mApkPath);
+        engine.setFromAPP(true);
         engine.registerPlugins(this, mWebView, mPluginCfgFile);
     }
 
