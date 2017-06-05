@@ -38,7 +38,6 @@ public class MainActivity extends DLBasePluginActivity {
 
     private void initParam() {
         try {
-            Intent intent = getIntent();
             InputStream is = this.getResources().getAssets().open(mGlabalCfgFile);
             GlobalCfg_dl globalCfg = GlobalCfg_dl.getInstance();
             globalCfg.parseConfig(is);
@@ -74,7 +73,6 @@ public class MainActivity extends DLBasePluginActivity {
         // 加载H5插件
         setH5PluginEngine();
 
-        Intent intent = getIntent();
         String url = GlobalCfg_dl.getInstance().attr(GlobalCfg_dl.CONFIG_FIELD_ONLINEADDR);
         mWebView.loadUrl(url);
     }
