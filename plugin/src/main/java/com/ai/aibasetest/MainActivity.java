@@ -11,16 +11,16 @@ import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
+import com.ai.base.AIBaseActivity;
 import com.ai.webplugin.AIWebViewClient;
 import com.ai.webplugin.dl.AIWebViewPluginEngine_dl;
 import com.ai.webplugin.dl.GlobalCfg_dl;
-import com.ryg.dynamicload.DLBasePluginActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
 
-public class MainActivity extends DLBasePluginActivity {
+public class MainActivity extends AIBaseActivity {
 
     private WebView mWebView;
     private LinearLayout mLinearLayout;
@@ -29,7 +29,7 @@ public class MainActivity extends DLBasePluginActivity {
     private static String mPluginCfgFile = "h5Plugin.xml";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         initParam();
@@ -48,13 +48,12 @@ public class MainActivity extends DLBasePluginActivity {
 
     private void setH5PluginEngine() {
         AIWebViewPluginEngine_dl engine = AIWebViewPluginEngine_dl.getInstance();
-        engine.setFromAPP(true);
         engine.registerPlugins(this, mWebView, mPluginCfgFile);
     }
 
     private void initWebView() {
 
-        mLinearLayout = new LinearLayout(that);
+        mLinearLayout = new LinearLayout(this);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         mLinearLayout.setLayoutParams(params);
@@ -63,9 +62,9 @@ public class MainActivity extends DLBasePluginActivity {
         LinearLayout.LayoutParams tvParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
 
-        mWebView = new WebView(that);
+        mWebView = new WebView(this);
         mWebView.setLayoutParams(params);
-        mWebView.setWebViewClient(new AIWebViewClient());
+        mWebView.setWebViewClient(new AIWebViewClient("",""));
 
         mLinearLayout.addView(mWebView,tvParams);
         setContentView(mLinearLayout);
@@ -99,7 +98,7 @@ public class MainActivity extends DLBasePluginActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_FIRST_USER) {
-            that.finish();
+            finish();
         }
 
         if (resultCode == this.RESULT_OK) {
@@ -134,7 +133,7 @@ public class MainActivity extends DLBasePluginActivity {
     @Override
     public void onBackPressed() {
         // 创建构建器
-        AlertDialog.Builder builder = new AlertDialog.Builder(that);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         // 设置参数
         builder.setTitle("提示").setIcon(R.mipmap.ic_launcher)
                 .setMessage("您是否要退出插件")
@@ -154,7 +153,7 @@ public class MainActivity extends DLBasePluginActivity {
 
                         //that.moveTaskToBack(false);
                     }
-        });
+                });
         builder.create().show();
     }
 }

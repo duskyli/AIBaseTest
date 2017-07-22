@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'replugin-plugin-gradle'
 
 android {
     compileSdkVersion 25
@@ -26,4 +27,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.qihoo360.replugin:replugin-plugin-lib:2.1.6'
 }

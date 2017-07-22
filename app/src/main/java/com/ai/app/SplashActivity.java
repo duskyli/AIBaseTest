@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.webkit.WebView;
-
 import com.ai.base.AIBaseActivity;
 import com.ai.base.ActivityConfig;
 import com.ai.base.util.AESEncrypt;
@@ -41,7 +40,7 @@ public class SplashActivity extends AIBaseActivity {
     private void enterHomeActivity() {
         Intent intent = new Intent(this, PortalActivity.class);
         startActivity(intent);
-        //finish();
+        finish();
     }
 
     private void clearAnswer () {

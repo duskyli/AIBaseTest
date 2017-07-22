@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <apkPlugins>
-    <apk name="plugin.apk" packageName="com.ai.aibasetest" activityClass="com.ai.aibasetest.MainActivity" apkAddr="http://192.168.31.75/"></apk>
+    <apk name="crmapp.apk" packageName="com.ai.aibasetest" activityClass="com.ai.aibasetest.MainActivity" apkAddr="http://172.20.10.2/"></apk>
 </apkPlugins>

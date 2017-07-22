@@ -2,12 +2,10 @@ package com.ai.app;
 
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
-
 import com.ai.base.AIBaseActivity;
-import com.ai.base.util.AESEncrypt;
-import com.ai.base.util.LocalStorageManager;
 import com.ai.webplugin.AIWebViewBasePlugin;
 import com.ai.webplugin.config.GlobalCfg;
+import com.qihoo360.replugin.RePlugin;
 
 import java.io.File;
 
@@ -16,12 +14,11 @@ import java.io.File;
  *
  */
 
-public class ExtendScriptPlugin extends AIWebViewBasePlugin {
+public class PortalScriptPlugin extends AIWebViewBasePlugin {
 
-    public ExtendScriptPlugin(AIBaseActivity activity) {
+    public PortalScriptPlugin(AIBaseActivity activity) {
         super(activity);
     }
-
 
     @JavascriptInterface
     @NotProguard
@@ -32,9 +29,7 @@ public class ExtendScriptPlugin extends AIWebViewBasePlugin {
         String apkPath = AppConfig.getInstance().getAPKAbsolutePath(pluginName);
         File apkFile = new File(apkPath);
         if (apkFile.exists()) {
-
             appConfig.loadAPK(apkPluginInfo,token,subAcc);
-
         } else {
             int downloadStatus = appConfig.getAPKDownloadStatus(pluginName);
             if (downloadStatus == 2) {

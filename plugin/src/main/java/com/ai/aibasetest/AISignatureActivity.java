@@ -1,11 +1,11 @@
 package com.ai.aibasetest;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.ai.base.AIBaseActivity;
 import com.ai.base.gesture.AISignatureView;
-import com.ryg.dynamicload.DLBasePluginActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.io.IOException;
  * Created by wuyoujian on 17/4/28.
  */
 
-public class AISignatureActivity extends DLBasePluginActivity {
+public class AISignatureActivity extends AIBaseActivity {
 
     public static final String kSignatureSavePathKey = "kSignatureSavePathKey";
 
@@ -28,7 +28,7 @@ public class AISignatureActivity extends DLBasePluginActivity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signature);
 
@@ -36,7 +36,7 @@ public class AISignatureActivity extends DLBasePluginActivity {
         if (savePath != null) {
             mSavePath = savePath;
         } else {
-            String filePath = that.getCacheDir().getAbsolutePath()+ "/images";
+            String filePath = getCacheDir().getAbsolutePath()+ "/images";
             File file = new File(filePath);
             file.mkdir();
             mSavePath = filePath + "/signature.png";
@@ -83,7 +83,7 @@ public class AISignatureActivity extends DLBasePluginActivity {
                 intent.putExtra("username",username);
                 intent.putExtra("functionName",functionName);
 
-                that.setResult(that.RESULT_OK,intent);
+                setResult(RESULT_OK,intent);
                 finish();
             }
         });

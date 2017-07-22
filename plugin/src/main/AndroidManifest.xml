@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.ai.aibasetest.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ai.aibasetest.AISignatureActivity"
+            android:name=".AISignatureActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -43,6 +43,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <meta-data android:name="com.qihoo360.plugin.name" android:value="crmapp"/>
+        <meta-data android:name="com.qihoo360.plugin.vesion.ver" android:value="1"/>
     </application>
 
 </manifest>

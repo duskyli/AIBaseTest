@@ -61,7 +61,7 @@ public class PortalActivity extends AIBaseActivity {
         mWebView.setBackgroundColor(Color.WHITE);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setDefaultTextEncodingName("utf-8");
-        mWebView.setWebViewClient(new AIWebViewClient() {
+        mWebView.setWebViewClient(new AIWebViewClient("","") {
 
             @Override
             public void onPageFinished(WebView view, String url) {

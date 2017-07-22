@@ -1,14 +1,13 @@
 package com.ai.app;
 
 import android.widget.Toast;
-
 import com.ai.base.AIBaseActivity;
 import com.ai.base.util.HttpUtil;
 import com.ai.base.util.LocalStorageManager;
-import com.ai.base.util.Utility;
 import com.ai.webplugin.config.ApkPluginCfg;
-import com.ryg.dynamicload.internal.DLIntent;
-import com.ryg.dynamicload.internal.DLPluginManager;
+import com.qihoo360.replugin.RePlugin;
+import com.qihoo360.replugin.model.PluginInfo;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -154,20 +153,15 @@ public class AppConfig {
 
     public void loadAPK(APKPluginInfo pluginInfo,String token,String subAcc) {
         //
-
         String apkPath = getAPKAbsolutePath(pluginInfo.name);
-        DLPluginManager pluginManager = DLPluginManager.getInstance(context);
-        pluginManager.loadApk(apkPath);
-
         String packageName = pluginInfo.getPackageName();
         String activityName = pluginInfo.getActivityName();
         if (packageName != null && activityName != null && apkPath != null) {
 
-            DLIntent intent = new DLIntent(packageName, activityName);
+            PluginInfo inf =  RePlugin.install(apkPath);
 
-            intent.putExtra("apkPath",apkPath);
-            intent.putExtra("pluginName",pluginInfo.name);
-            pluginManager.startPluginActivity(context, intent);
+            RePlugin.startActivity(context, RePlugin.createIntent("crmapp",
+                    activityName));
         } else {
             Toast.makeText(context,"插件包异常",Toast.LENGTH_SHORT).show();
         }

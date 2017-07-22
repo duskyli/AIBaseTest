@@ -1,12 +1,12 @@
 package com.ai.aibasetest;
 
 
+import android.content.Intent;
 import android.webkit.JavascriptInterface;
 
+import com.ai.base.AIBaseActivity;
 import com.ai.webplugin.dl.AIWebViewBasePlugin_dl;
 import com.ai.webplugin.dl.GlobalCfg_dl;
-import com.ryg.dynamicload.DLBasePluginActivity;
-import com.ryg.dynamicload.internal.DLIntent;
 
 /**
  * Created by wuyoujian on 2017/5/4.
@@ -14,7 +14,7 @@ import com.ryg.dynamicload.internal.DLIntent;
 
 public class ExtendScriptPlugin extends AIWebViewBasePlugin_dl {
 
-    public ExtendScriptPlugin(DLBasePluginActivity activity) {
+    public ExtendScriptPlugin(AIBaseActivity activity) {
         super(activity);
     }
 
@@ -22,10 +22,10 @@ public class ExtendScriptPlugin extends AIWebViewBasePlugin_dl {
     @JavascriptInterface
     @NotProguard
     public void JN_Signature(String functionName, String username) {
-        DLIntent intent = new DLIntent(getDLActivity().getPackageName(), AISignatureActivity.class);
+        Intent intent = new Intent(getActivity(), AISignatureActivity.class);
         intent.putExtra("username",username);
         intent.putExtra("functionName",functionName);
-        getDLActivity().startPluginActivityForResult(intent, 100);
+        getActivity().startActivityForResult(intent, 100);
     }
 
 
@@ -47,6 +47,6 @@ public class ExtendScriptPlugin extends AIWebViewBasePlugin_dl {
     @JavascriptInterface
     @NotProguard
     public void JN_BackToPortal() {
-        getDLActivity().finish();
+        getActivity().finish();
     }
 }

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <h5Plugins>
-    <plugin name="ExtendScriptPlugin" class="com.ai.app.ExtendScriptPlugin"></plugin>
+    <plugin name="PortalScriptPlugin" class="com.ai.app.PortalScriptPlugin"></plugin>
 </h5Plugins>
