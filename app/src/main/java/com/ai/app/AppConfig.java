@@ -158,7 +158,11 @@ public class AppConfig {
         String activityName = pluginInfo.getActivityName();
         if (packageName != null && activityName != null && apkPath != null) {
 
+
             PluginInfo inf =  RePlugin.install(apkPath);
+            if (inf != null ) {
+                RePlugin.preload(inf);
+            }
 
             RePlugin.startActivity(context, RePlugin.createIntent("crmapp",
                     activityName));
